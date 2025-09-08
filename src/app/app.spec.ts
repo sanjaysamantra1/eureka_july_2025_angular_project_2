@@ -1,25 +1,33 @@
-import { provideZonelessChangeDetection } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
-import { App } from './app';
+import { App } from "./app"
 
-describe('App', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [App],
-      providers: [provideZonelessChangeDetection()]
-    }).compileComponents();
+describe('Test Suite for App Component', () => { // test suite , group of test cases
+  const app = new App();
+
+  it('Test case-1 from app component', () => { // test case
+    expect(app).toBeDefined();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  it('Should Test add function', () => {
+    expect(app.add(10, 20)).toBe(30);
+    expect(app.add(10, -20)).toBe(-10);
+    expect(app.add(-10, -20)).toBe(-30);
+    expect(app.add(-10, 20)).toBe(10);
+  })
+
+  it('Should Test mul function', () => {
+    expect(app.mul(10, 20)).toBe(200);
+    expect(app.mul(10, -20)).toBe(-200);
+    expect(app.mul(-10, -20)).toBe(200);
+    expect(app.mul(-10, 20)).toBe(-200);
+  })
+  
+  it('Should Test isEven function', () => {
+    expect(app.isEven(4)).toBe('even');
+    expect(app.isEven(5)).toBe('odd');
+  })
+
+  it('should verify sumOfDigits function', () => {
+    expect(app.sumOfDigits(125)).toBe(8);
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(App);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, eureka_july_2025_angular_project_2');
-  });
 });
