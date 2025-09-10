@@ -1,11 +1,15 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Counter } from './components/counter/counter';
+import { Todocrud } from './components/todocrud/todocrud';
+import { EmployeeCrud } from './components/employee-crud/employee-crud';
 
 @Component({
   selector: 'app-root',
   imports: [
-    Counter
+    // Counter
+    // Todocrud
+    EmployeeCrud
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'
